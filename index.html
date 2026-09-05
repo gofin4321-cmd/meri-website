@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaid | Web Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Inter',sans-serif;background:#0b0d10;color:#f0ece6;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+        .container{max-width:860px;width:100%}
+        .card{background:#15191e;border:1px solid #2a2f36;border-radius:20px;padding:30px 32px;margin-bottom:18px;transition:.2s}
+        .card:hover{border-color:#e4ad45}
+        .profile{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+        .avatar{width:70px;height:70px;background:#e4ad45;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:#0b0d10;flex-shrink:0}
+        .name h1{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:#fff;line-height:1.1}
+        .name p{color:#b8b0a3;font-size:15px;font-weight:500}
+        .badge{display:inline-block;background:rgba(228,173,69,.12);border:1px solid rgba(228,173,69,.2);padding:4px 14px;border-radius:30px;font-size:12px;font-weight:600;color:#e4ad45;margin-top:6px}
+        .section-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:12px}
+        .section-title span{color:#e4ad45}
+        p{color:#b8b0a3;font-size:15px;line-height:1.6}
+        .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+        .skills span{background:#0b0d10;border:1px solid #2a2f36;padding:6px 16px;border-radius:30px;font-size:13px;color:#cbc4b8;transition:.2s}
+        .skills span:hover{border-color:#e4ad45;color:#fff}
+        .demo-box{background:#0b0d10;border-radius:14px;padding:18px 22px;border-left:3px solid #e4ad45;margin-top:8px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+        .demo-box strong{color:#fff;font-size:17px}
+        .demo-box .demo-btn{background:#e4ad45;color:#0b0d10;padding:10px 24px;border-radius:60px;font-weight:700;border:none;cursor:pointer;transition:.2s;font-size:14px;font-family:'Inter',sans-serif;display:inline-block;margin-top:8px}
+        .demo-box .demo-btn:hover{background:#f0c05a;transform:scale(1.02)}
+        .gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+        .gallery-item{border-radius:12px;overflow:hidden;border:1px solid #2a2f36;transition:.2s;cursor:pointer;background:#0b0d10}
+        .gallery-item:hover{border-color:#e4ad45;transform:scale(1.02)}
+        .gallery-item img{width:100%;height:140px;object-fit:cover;display:block}
+        .gallery-item .label{padding:6px 12px;font-size:11px;color:#817a70;text-align:center;background:#0b0d10;font-weight:500}
+        .contact-row{display:flex;flex-wrap:wrap;gap:18px 30px;margin:10px 0 16px}
+        .contact-row .item{display:flex;align-items:center;gap:8px;color:#b8b0a3;font-size:14px}
+        .contact-row .item strong{color:#fff;font-weight:600}
+        .contact-row .item a{color:#b8b0a3;text-decoration:none}
+        .contact-row .item a:hover{color:#e4ad45}
+        .btn-group{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
+        .btn{display:inline-block;padding:12px 28px;border-radius:60px;font-weight:700;font-size:14px;text-decoration:none;transition:.2s;border:none;cursor:pointer;text-align:center}
+        .btn-gold{background:#e4ad45;color:#0b0d10}
+        .btn-gold:hover{background:#f0c05a;transform:translateY(-2px)}
+        .btn-outline{background:transparent;border:1.5px solid #3d4550;color:#f0ece6}
+        .btn-outline:hover{border-color:#e4ad45;color:#e4ad45;transform:translateY(-2px)}
+        .footer{text-align:center;padding:16px 0 4px;color:#5a5550;font-size:13px;border-top:1px solid #1e2228;margin-top:6px}
+        .whatsapp-float{position:fixed;bottom:20px;right:20px;background:#25D366;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(37,211,102,.3);z-index:100;transition:.2s;text-decoration:none}
+        .whatsapp-float:hover{transform:scale(1.05)}
+        .whatsapp-float svg{width:30px;fill:#fff}
+        .lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:999;padding:30px;cursor:zoom-out}
+        .lightbox.active{display:flex}
+        .lightbox img{max-width:90%;max-height:90%;border-radius:12px;border:1px solid #2a2f36;box-shadow:0 20px 60px rgba(0,0,0,.8)}
+        .demo-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px}
+        .demo-modal.active{display:flex}
+        .demo-modal .modal-box{background:#0b0d10;border:1px solid #e4ad45;border-radius:16px;width:95%;max-width:1200px;height:92vh;position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.8)}
+        .demo-modal .modal-box .close-btn{position:absolute;top:12px;right:16px;font-size:28px;color:#fff;background:rgba(0,0,0,.6);border:none;border-radius:50%;width:44px;height:44px;cursor:pointer;z-index:10;transition:.2s;display:flex;align-items:center;justify-content:center;line-height:1;border:1px solid rgba(255,255,255,.2)}
+        .demo-modal .modal-box .close-btn:hover{background:#e4ad45;color:#0b0d10;transform:scale(1.1)}
+        .demo-modal .modal-box iframe{width:100%;height:100%;border:none;display:block}
+        @media(max-width:600px){.card{padding:22px 18px}.name h1{font-size:28px}.profile{gap:14px}.btn-group{flex-direction:column}.btn{text-align:center}.gallery{grid-template-columns:1fr}.gallery-item img{height:200px}.demo-modal .modal-box{height:85vh;width:100%;border-radius:12px}.demo-modal{padding:10px}}
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="card">
+        <div class="profile">
+            <div class="avatar">ZA</div>
+            <div class="name">
+                <h1>Zaid Ali</h1>
+                <p>Web Developer · Restaurant Specialist</p>
+                <span class="badge">⭐ 10+ Years Experience</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="section-title">👋 <span>About Me</span></div>
+        <p>I help <strong style="color:#fff;">Pakistani restaurants</strong> grow their business online with <strong style="color:#e4ad45;">professional, fast & mobile-friendly</strong> websites. I turn visitors into customers.</p>
+        <p style="margin-top:8px;font-size:14px;color:#5a5550;">📍 Based in Pakistan · Available Worldwide</p>
+    </div>
+
+    <div class="card">
+        <div class="section-title">🛠️ <span>My Expertise</span></div>
+        <div class="skills">
+            <span>HTML & CSS</span>
+            <span>Responsive Design</span>
+            <span>Restaurant Sites</span>
+            <span>Landing Pages</span>
+            <span>Online Menus</span>
+            <span>WhatsApp API</span>
+            <span>Google Maps</span>
+            <span>Mobile-First</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="section-title">📁 <span>Recent Work — Urban Spice</span></div>
+        <p>Here are screenshots of a premium restaurant website I built:</p>
+
+        <div class="gallery">
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80" alt="Hero" loading="lazy">
+                <div class="label">🏠 Hero Section</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" alt="Menu" loading="lazy">
+                <div class="label">📋 Menu Section</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80" alt="Desserts" loading="lazy">
+                <div class="label">🍰 Desserts</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=600&q=80" alt="Why Us" loading="lazy">
+                <div class="label">⭐ Why Us</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=600&q=80" alt="Features" loading="lazy">
+                <div class="label">🔥 Features</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600&q=80" alt="Contact" loading="lazy">
+                <div class="label">📞 Contact</div>
+            </div>
+        </div>
+
+        <div class="demo-box" style="margin-top:16px;">
+            <div>
+                <strong>🍽️ Urban Spice — Live Demo</strong>
+                <p style="font-size:13px;margin:4px 0 0;color:#817a70;">Menu · Online Order · WhatsApp · Map</p>
+            </div>
+            <!-- ⚠️ REPLACE THE URL BELOW WITH YOUR REAL DEMO SITE LINK -->
+            <button class="demo-btn" onclick="openDemoModal('https://your-real-demo-url-here.com')">🔗 View Demo</button>
+        </div>
+        <p style="font-size:13px;color:#5a5550;margin-top:12px;">
+            ⏱️ I can deliver your custom website within <strong style="color:#e4ad45;">24 hours</strong>.
+        </p>
+    </div>
+
+    <!-- ===== CONTACT SECTION (FIXED) ===== -->
+    <div class="card">
+        <div class="section-title">📞 <span>Let's Connect</span></div>
+        <div class="contact-row">
+            <div class="item"><strong>📱 Phone</strong> <span style="color:#fff;">0336 7530576</span></div>
+            <div class="item"><strong>💬 WhatsApp</strong> <span style="color:#fff;">0336 7530576</span></div>
+            <div class="item"><strong>✉️ Email</strong> <span style="color:#fff;">gofin4321@gmail.com</span></div>
+        </div>
+
+        <div class="btn-group">
+            <!-- ✅ FIXED: simple tel: link works on Android, iOS and desktop -->
+            <a href="tel:+923367530576" class="btn btn-gold">📞 Call Now</a>
+            <!-- ✅ WHATSAPP BUTTON: Standard wa.me link -->
+            <a href="https://wa.me/923367530576" target="_blank" class="btn btn-outline">💬 WhatsApp</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        © 2026 <strong style="color:#e4ad45;">Zaid Ali</strong> · Web Developer · Pakistan
+    </div>
+
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightboxImg" src="" alt="">
+</div>
+
+<!-- Demo Modal -->
+<div class="demo-modal" id="demoModal">
+    <div class="modal-box">
+        <button class="close-btn" onclick="closeDemoModal()">✕</button>
+        <iframe src="" id="demoIframe"></iframe>
+    </div>
+</div>
+
+<!-- Floating WhatsApp (fixed icon) -->
+<a href="https://wa.me/923367530576" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16.004 0C7.18 0 .004 7.176.004 16c0 2.82.736 5.58 2.136 8.02L0 32l8.168-2.14A15.92 15.92 0 0016.004 32C24.828 32 32 24.824 32 16S24.828 0 16.004 0zm0 29.2c-2.48 0-4.908-.664-7.028-1.92l-.504-.3-5.216 1.368 1.392-5.088-.328-.52A13.14 13.14 0 012.8 16C2.8 8.72 8.724 2.8 16.004 2.8S29.2 8.72 29.2 16 23.276 29.2 16.004 29.2zm7.2-9.84c-.396-.2-2.34-1.156-2.704-1.288-.364-.132-.628-.2-.892.2-.264.396-1.024 1.288-1.256 1.552-.232.264-.464.296-.86.1-.396-.2-1.672-.616-3.184-1.964-1.176-1.048-1.972-2.344-2.204-2.74-.232-.396-.024-.612.176-.808.18-.18.396-.464.596-.696.2-.232.264-.396.396-.66.132-.264.066-.496-.034-.696-.1-.2-.892-2.148-1.224-2.94-.32-.768-.648-.66-.892-.672-.232-.012-.496-.012-.76-.012-.264 0-.696.1-1.06.496-.364.396-1.392 1.36-1.392 3.316s1.424 3.844 1.624 4.108c.2.264 2.804 4.428 6.796 6.208.95.412 1.692.658 2.27.842.954.304 1.822.26 2.51.158.766-.114 2.34-.956 2.668-1.882.328-.926.328-1.72.23-1.884-.098-.164-.362-.264-.758-.464z"/>
+    </svg>
+</a>
+
+<script>
+    function openLightbox(el) {
+        var img = el.querySelector('img');
+        var lightbox = document.getElementById('lightbox');
+        var lightboxImg = document.getElementById('lightboxImg');
+        if (img) {
+            lightboxImg.src = img.src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    function openDemoModal(url) {
+        document.getElementById('demoModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+        var iframe = document.getElementById('demoIframe');
+        iframe.src = url;
+    }
+    function closeDemoModal() {
+        document.getElementById('demoModal').classList.remove('active');
+        document.body.style.overflow = 'auto';
+        document.getElementById('demoIframe').src = '';
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeLightbox();
+            closeDemoModal();
+        }
+    });
+
+    document.getElementById('demoModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeDemoModal();
+        }
+    });
+</script>
+
+</body>
+</html>
