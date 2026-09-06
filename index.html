@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zaid Ali — Websites for Restaurants</title>
+<meta name="description" content="Fast, affordable websites for Pakistani restaurants. WhatsApp ordering, Google Maps, Call button — live in 24-48 hours.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Manrope:wght@400;500;700;800&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night: #0b0d10;
+    --night-2: #15191e;
+    --card: #1e2228;
+    --gold: #e4ad45;
+    --gold-2: #f0c05a;
+    --cream: #f0ece6;
+    --muted: #817a70;
+    --wa-green: #25D366;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Manrope', sans-serif;
+    background:var(--night);
+    color:var(--cream);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:900;
+    line-height:1.08;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* ---------- Ornate divider (truck-art inspired strip) ---------- */
+  .art-strip{
+    height:14px;
+    background:
+      repeating-linear-gradient(
+        45deg,
+        var(--gold) 0 18px,
+        var(--gold) 18px 36px,
+        var(--gold-2) 36px 54px
+      );
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    padding:20px 0 16px;
+    position:sticky;
+    top:0;
+    background:rgba(11,13,16,0.94);
+    backdrop-filter:blur(6px);
+    z-index:50;
+    border-bottom:1px solid rgba(228,173,69,0.15);
+  }
+  .header-top{
+    text-align:center;
+    margin-bottom:14px;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:1.25rem;
+    color:var(--cream);
+  }
+  .logo span{color:var(--gold);}
+  .header-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-bottom:14px;
+  }
+  .action-col{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    background:rgba(228,173,69,0.1);
+    border:1px solid rgba(228,173,69,0.3);
+    color:var(--cream);
+    font-weight:700;
+    font-size:0.85rem;
+    padding:11px 14px;
+    border-radius:8px;
+  }
+  .header-nav{
+    display:flex;
+    justify-content:center;
+  }
+  nav ul{
+    display:flex;
+    gap:28px;
+    list-style:none;
+  }
+  nav a{
+    font-size:0.95rem;
+    font-weight:500;
+    color:var(--cream);
+    opacity:0.85;
+    transition:opacity 0.2s;
+  }
+  nav a:hover{opacity:1;}
+  .est-tag{
+    font-size:0.7rem;
+    color:var(--muted);
+    letter-spacing:0.02em;
+    margin-left:8px;
+  }
+  @media (max-width:500px){
+    nav ul{gap:16px; flex-wrap:wrap;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:80px 0 70px;
+    position:relative;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:48px;
+    align-items:center;
+  }
+  @media (max-width:860px){
+    .hero .wrap{grid-template-columns:1fr;}
+  }
+  .hero h1{
+    font-size:clamp(2.2rem, 5vw, 3.4rem);
+    color:var(--cream);
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--gold);
+  }
+  .hero p.lead{
+    margin-top:22px;
+    font-size:1.1rem;
+    max-width:46ch;
+    color:rgba(253,246,233,0.82);
+  }
+  .cta-row{
+    margin-top:34px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:12px 22px;
+    border-radius:8px;
+    font-weight:700;
+    font-size:0.92rem;
+    transition:transform 0.15s ease;
+  }
+  .btn:active{transform:scale(0.97);}
+  .btn-primary{
+    background:var(--gold);
+    color:var(--night);
+  }
+  .btn-secondary{
+    background:transparent;
+    color:var(--cream);
+    border:1.5px solid rgba(253,246,233,0.4);
+  }
+  .hero-note{
+    margin-top:20px;
+    font-size:0.88rem;
+    color:rgba(253,246,233,0.6);
+  }
+
+  /* Hero visual: phone mockup with a simple restaurant page */
+  .phone-mock{
+    background:var(--night-2);
+    border-radius:28px;
+    padding:14px;
+    border:2px solid rgba(255,201,60,0.25);
+    box-shadow:0 30px 60px rgba(0,0,0,0.4);
+    max-width:290px;
+    margin:0 auto;
+  }
+  .phone-screen{
+    background:var(--cream);
+    border-radius:18px;
+    overflow:hidden;
+    color:var(--night);
+  }
+  .phone-screen .ps-hero{
+    background:linear-gradient(135deg, var(--gold-2), var(--gold));
+    height:110px;
+    display:flex;
+    align-items:flex-end;
+    padding:12px;
+    color:var(--cream);
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:1.1rem;
+  }
+  .phone-screen .ps-body{padding:14px;}
+  .phone-screen .ps-line{
+    height:9px;
+    background:rgba(27,16,53,0.12);
+    border-radius:4px;
+    margin-bottom:8px;
+  }
+  .phone-screen .ps-line.short{width:60%;}
+  .phone-screen .ps-btns{
+    margin-top:14px;
+    display:flex;
+    gap:8px;
+  }
+  .phone-screen .ps-btn{
+    flex:1;
+    text-align:center;
+    padding:9px 0;
+    border-radius:8px;
+    font-size:0.72rem;
+    font-weight:700;
+  }
+  .ps-btn.call{background:var(--gold); color:var(--night);}
+  .ps-btn.wa{background:#25D366; color:#fff;}
+
+  /* ---------- Pain points ---------- */
+  .pain{
+    padding:60px 0;
+    background:var(--night-2);
+  }
+  .pain-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:32px;
+    margin-top:36px;
+  }
+  @media (max-width:800px){
+    .pain-grid{grid-template-columns:1fr;}
+  }
+  .pain h2{
+    font-size:clamp(1.6rem, 3vw, 2.2rem);
+    max-width:20ch;
+  }
+  .pain-item{
+    border-left:3px solid var(--gold-2);
+    padding-left:18px;
+  }
+  .pain-item h3{
+    font-size:1.05rem;
+    color:var(--gold);
+    margin-bottom:8px;
+    font-weight:600;
+  }
+  .pain-item p{
+    font-size:0.95rem;
+    color:rgba(253,246,233,0.75);
+  }
+
+  /* ---------- Services ---------- */
+  .services{padding:80px 0;}
+  .services-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  .services-head h2{font-size:clamp(1.8rem, 3.5vw, 2.4rem); max-width:16ch;}
+  .services-head p{max-width:34ch; color:rgba(253,246,233,0.75); font-size:0.98rem;}
+
+  .service-list{
+    margin-top:44px;
+    display:flex;
+    flex-direction:column;
+  }
+  .service-row{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:24px;
+    padding:26px 0;
+    border-top:1px solid rgba(253,246,233,0.15);
+    align-items:baseline;
+  }
+  .service-row:last-child{border-bottom:1px solid rgba(253,246,233,0.15);}
+  @media (max-width:700px){
+    .service-row{grid-template-columns:1fr;}
+  }
+  .service-row h3{
+    font-size:1.3rem;
+    color:var(--cream);
+    font-weight:600;
+  }
+  .service-row p{
+    color:rgba(253,246,233,0.72);
+    font-size:0.98rem;
+    max-width:56ch;
+  }
+
+  /* ---------- Process ---------- */
+  .process{
+    padding:80px 0;
+    background:var(--night-2);
+  }
+  .process h2{font-size:clamp(1.8rem, 3.5vw, 2.4rem); max-width:18ch;}
+  .steps{
+    margin-top:44px;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+  }
+  @media (max-width:800px){
+    .steps{grid-template-columns:1fr;}
+  }
+  .step{
+    background:rgba(253,246,233,0.04);
+    border:1px solid rgba(255,201,60,0.18);
+    border-radius:14px;
+    padding:28px 22px;
+  }
+  .step .num{
+    font-family:'Fraunces', serif;
+    font-size:2.2rem;
+    font-weight:900;
+    color:var(--gold);
+  }
+  .step h3{
+    margin-top:10px;
+    font-size:1.1rem;
+    font-weight:600;
+  }
+  .step p{
+    margin-top:8px;
+    font-size:0.93rem;
+    color:rgba(253,246,233,0.72);
+  }
+
+  /* ---------- Work sample ---------- */
+  .work{padding:80px 0;}
+  .work-card{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+    background:var(--night-2);
+    border-radius:20px;
+    padding:40px;
+    border:1px solid rgba(255,201,60,0.15);
+  }
+  @media (max-width:800px){
+    .work-card{grid-template-columns:1fr; padding:28px;}
+  }
+  .work-card h2{font-size:clamp(1.5rem, 3vw, 2rem);}
+  .work-card p{margin-top:14px; color:rgba(253,246,233,0.75); font-size:0.98rem;}
+  .work-visual{
+    background:linear-gradient(160deg, var(--gold-2), var(--night));
+    border-radius:14px;
+    height:220px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Fraunces', serif;
+    font-weight:900;
+    font-size:1.4rem;
+    text-align:center;
+    padding:20px;
+    color:var(--cream);
+    border:1px solid rgba(255,201,60,0.2);
+  }
+
+  /* ---------- Pricing ---------- */
+  .pricing{
+    padding:60px 0;
+    background:var(--night-2);
+  }
+  .summary-list{
+    display:flex;
+    flex-direction:column;
+    gap:26px;
+  }
+  .summary-item a{display:inline-block;}
+  .summary-item h3{
+    font-size:1.2rem;
+    font-weight:700;
+    color:var(--gold-2);
+  }
+  .summary-item p{
+    margin-top:8px;
+    font-size:0.95rem;
+    color:rgba(240,236,230,0.78);
+    max-width:52ch;
+  }
+
+  /* ---------- Contact / Footer ---------- */
+  .contact{
+    padding:90px 0 60px;
+    text-align:center;
+  }
+  .contact h2{
+    font-size:clamp(2rem, 5vw, 2.8rem);
+    max-width:18ch;
+    margin:0 auto;
+  }
+  .contact p{
+    margin-top:16px;
+    color:rgba(253,246,233,0.75);
+    max-width:44ch;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .contact .cta-row{
+    flex-direction:column;
+    align-items:center;
+  }
+  .contact .cta-top{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    width:100%;
+    max-width:420px;
+  }
+  .contact .cta-top .btn{
+    justify-content:center;
+    padding:12px 10px;
+    font-size:0.85rem;
+  }
+  footer{
+    padding:28px 0 40px;
+    text-align:center;
+    font-size:0.85rem;
+    color:var(--muted);
+  }
+  footer a{
+    color:var(--gold-2);
+    font-weight:600;
+  }
+  footer .copyright{
+    margin-top:10px;
+    font-size:0.78rem;
+    color:var(--muted);
+  }
+
+  /* ---------- Floating WhatsApp ---------- */
+  .whatsapp-float{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:var(--wa-green);
+    width:56px;
+    height:56px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 4px 18px rgba(37,211,102,0.35);
+    z-index:100;
+    transition:transform 0.2s;
+  }
+  .whatsapp-float:hover{transform:scale(1.06);}
+  .whatsapp-float svg{width:28px; fill:#fff;}
+
+  /* ---------- Email chip ---------- */
+  .email-chip{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:rgba(240,236,230,0.06);
+    border:1px solid rgba(228,173,69,0.3);
+    color:var(--cream);
+    padding:10px 18px;
+    border-radius:8px;
+    font-size:0.88rem;
+    font-weight:600;
+  }
+
+  /* ---------- Scroll reveal ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  /* ---------- Urdu / RTL mode ---------- */
+  html.ur-mode body{
+    font-family:'Noto Nastaliq Urdu', serif;
+  }
+  html.ur-mode h1, html.ur-mode h2, html.ur-mode h3{
+    font-family:'Noto Nastaliq Urdu', serif;
+    line-height:1.9;
+  }
+  html.ur-mode .i18n{direction:rtl;}
+
+  /* ---------- Floating Translate button ---------- */
+  .translate-float{
+    position:fixed;
+    bottom:84px;
+    right:20px;
+    background:var(--gold);
+    color:var(--night);
+    width:56px;
+    height:56px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 4px 18px rgba(228,173,69,0.4);
+    z-index:100;
+    transition:transform 0.2s;
+    font-weight:800;
+    font-size:0.95rem;
+    border:none;
+    cursor:pointer;
+    font-family:'Fraunces', serif;
+  }
+  .translate-float:hover{transform:scale(1.06);}
+
+  /* ---------- Header translate pill ---------- */
+  .header-translate{
+    display:flex;
+    justify-content:center;
+    margin-top:10px;
+  }
+  .translate-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:rgba(228,173,69,0.1);
+    border:1px solid rgba(228,173,69,0.35);
+    color:var(--gold-2);
+    font-size:0.8rem;
+    font-weight:700;
+    padding:7px 16px;
+    border-radius:999px;
+    cursor:pointer;
+  }
+
+  /* ---------- Translate popup ---------- */
+  .translate-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(11,13,16,0.75);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:200;
+    padding:24px;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.3s ease;
+  }
+  .translate-overlay.show{
+    opacity:1;
+    pointer-events:auto;
+  }
+  .translate-modal{
+    background:var(--night-2);
+    border:1px solid rgba(228,173,69,0.3);
+    border-radius:16px;
+    padding:26px 24px;
+    max-width:340px;
+    text-align:center;
+    box-shadow:0 20px 60px rgba(0,0,0,0.5);
+  }
+  .translate-modal p{
+    font-size:0.98rem;
+    color:var(--cream);
+    margin-bottom:18px;
+  }
+  .translate-modal .modal-btns{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+  }
+  .translate-modal button{
+    padding:10px 18px;
+    border-radius:8px;
+    font-weight:700;
+    font-size:0.9rem;
+    border:none;
+    cursor:pointer;
+  }
+  .modal-btn-ur{background:var(--gold); color:var(--night);}
+  .modal-btn-en{background:transparent; color:var(--cream); border:1px solid rgba(253,246,233,0.4) !important;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-top">
+    <div class="logo i18n" data-ur="زید علی - ویب ڈویلپر">Zaid Ali - Web Developer</div>
+  </div>
+  <div class="wrap header-translate">
+    <button class="translate-pill" id="headerTranslateBtn" onclick="toggleLang()">🌐 اردو میں دیکھیں</button>
+  </div>
+</header>
+
+<div class="art-strip"></div>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1 class="i18n" data-ur="آپ کے ریسٹورنٹ کا اگلا کسٹمر ابھی اسکرول کر رہا ہے۔">Your restaurant's next customer is scrolling <em>right now.</em></h1>
+      <p class="lead i18n" data-ur="پاکستان میں زیادہ تر ریسٹورنٹس زبانی تشہیر اور سائن بورڈ پر لکھے نمبر پر چلتے ہیں۔ میں ایسی ویب سائٹ بناتا ہوں جو آن لائن سرچ کو آرڈر میں بدل دے — 24 سے 48 گھنٹوں میں لائیو۔">Most restaurants in Pakistan run on word of mouth and a phone number scribbled on a signboard. I build the website that turns online searches into orders — live in 24 to 48 hours.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary i18n" data-ur="واٹس ایپ پر بات کریں" href="https://wa.me/923367530576" target="_blank">Chat on WhatsApp</a>
+        <a class="btn btn-secondary i18n" data-ur="ابھی کال کریں" href="tel:+923367530576">Call Now</a>
+      </div>
+      <p class="hero-note i18n" data-ur="کوئی ایجنسی کا جھنجھٹ نہیں۔ آپ براہ راست اس شخص سے بات کرتے ہیں جو آپ کی سائٹ بنا رہا ہے۔">No agency overhead. You talk directly to the person building your site.</p>
+    </div>
+    <div class="phone-mock">
+      <div class="phone-screen">
+        <div class="ps-hero">Karachi Grill House</div>
+        <div class="ps-body">
+          <div class="ps-line"></div>
+          <div class="ps-line"></div>
+          <div class="ps-line short"></div>
+          <div class="ps-btns">
+            <div class="ps-btn call i18n" data-ur="کال">Call</div>
+            <div class="ps-btn wa i18n" data-ur="واٹس ایپ">WhatsApp</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pain">
+  <div class="wrap">
+    <h2 class="i18n" data-ur="یہ وہ چیزیں ہیں جو خاموشی سے آپ کے کسٹمرز کم کر رہی ہیں۔">Here's what's quietly costing you customers.</h2>
+    <div class="pain-grid">
+      <div class="pain-item">
+        <h3 class="i18n" data-ur="کوئی ویب سائٹ نہیں، کوئی پہلا تاثر نہیں">No website, no first impression</h3>
+        <p class="i18n" data-ur="کسٹمر آپ کے ریسٹورنٹ کا نام سرچ کرتا ہے اور کچھ نہیں ملتا — یا اس کی جگہ کوئی مقابل مل جاتا ہے۔">A customer searches your restaurant's name and finds nothing — or finds a competitor instead.</p>
+      </div>
+      <div class="pain-item">
+        <h3 class="i18n" data-ur="دیر سے جواب دینے کی وجہ سے آرڈر ضائع">Orders lost to slow replies</h3>
+        <p class="i18n" data-ur="ایک ٹیپ والے واٹس ایپ یا کال بٹن کے بغیر، بھوکے کسٹمر اس کی طرف چلے جاتے ہیں جو جلدی جواب دے۔">Without a one-tap WhatsApp or Call button, hungry customers move on to whoever answers faster.</p>
+      </div>
+      <div class="pain-item">
+        <h3 class="i18n" data-ur="گوگل میپس پر نظر نہیں آتے">Invisible on Google Maps</h3>
+        <p class="i18n" data-ur="جن ریسٹورنٹس کی ویب سائٹ لنکڈ ہوتی ہے وہ 'food near me' سرچ میں اوپر آتے ہیں۔">Nearby restaurants with a linked website show up higher when people search "food near me."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="services-head">
+      <h2 class="i18n" data-ur="آپ کو اصل میں کیا ملتا ہے">What you actually get</h2>
+      <p class="i18n" data-ur="کوئی غیر ضروری اضافی چیزیں نہیں — بس وہی جو پاکستان میں ریسٹورنٹ ویب سائٹ کو کارآمد بناتا ہے۔">No unnecessary extras — just what makes a restaurant website work in Pakistan.</p>
+    </div>
+    <div class="service-list">
+      <div class="service-row">
+        <h3 class="i18n" data-ur="ویب سائٹ ڈیزائن اور تعمیر">Website Design & Build</h3>
+        <p class="i18n" data-ur="ایک صاف، موبائل کے لیے بنائی گئی سائٹ جس میں آپ کا مینو، تصاویر، لوکیشن اور اوقات شامل ہوں گے — سست انٹرنیٹ پر بھی تیزی سے لوڈ ہو۔">A clean, mobile-first site with your menu, photos, location and hours — built to load fast even on slower connections.</p>
+      </div>
+      <div class="service-row">
+        <h3 class="i18n" data-ur="واٹس ایپ اور کال بٹن">WhatsApp & Call Buttons</h3>
+        <p class="i18n" data-ur="ایک ٹیپ میں آرڈر اور کال کی سہولت، تاکہ کسٹمر فیصلہ کرتے ہی آپ تک پہنچ جائیں۔">One-tap ordering and calling built into the site, so customers reach you the moment they decide to order.</p>
+      </div>
+      <div class="service-row">
+        <h3 class="i18n" data-ur="گوگل میپس انٹیگریشن">Google Maps Integration</h3>
+        <p class="i18n" data-ur="آپ کی لوکیشن سیدھا سائٹ میں شامل، تاکہ نئے کسٹمرز آسانی سے آپ تک پہنچ سکیں۔">Your location embedded directly on the site, making it easier for new customers to find you in person.</p>
+      </div>
+      <div class="service-row">
+        <h3 class="i18n" data-ur="تیز رفتار ڈیلیوری">Fast Turnaround</h3>
+        <p class="i18n" data-ur="زیادہ تر سائٹس آپ کی تفصیلات ملنے کے 24 سے 48 گھنٹوں میں لائیو ہو جاتی ہیں۔">Most sites go live within 24 to 48 hours of getting your restaurant's details.</p>
+      </div>
+      <div class="service-row">
+        <h3 class="i18n" data-ur="مسلسل سپورٹ">Ongoing Support</h3>
+        <p class="i18n" data-ur="بعد میں مینو یا اوقات بدلنے ہیں؟ مجھے براہ راست میسج کریں — کوئی ٹکٹ سسٹم، کوئی انتظار نہیں۔">Need to update your menu or hours later? Message me directly — no ticket systems, no waiting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <h2 class="i18n" data-ur="یہ کیسے کام کرتا ہے، شروع سے آخر تک">How it works, start to finish</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3 class="i18n" data-ur="مجھے اپنے ریسٹورنٹ کے بارے میں بتائیں">Tell me about your restaurant</h3>
+        <p class="i18n" data-ur="ایک مختصر واٹس ایپ چیٹ — آپ کا مینو، تصاویر، نمبر اور پتہ۔">A quick WhatsApp chat — your menu, photos, number and address.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3 class="i18n" data-ur="میں اسے ڈیزائن اور تیار کرتا ہوں">I design and build it</h3>
+        <p class="i18n" data-ur="آپ کی سائٹ 24 سے 48 گھنٹوں میں تیار ہو جاتی ہے، آپ کے ریسٹورنٹ کی خاص باتوں کے مطابق۔">Your site comes together within 24 to 48 hours, built around what makes your restaurant stand out.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3 class="i18
